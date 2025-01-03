@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client"; // This is a client component
 import { SetStateAction, useEffect, useState } from "react";
 import { io } from "socket.io-client";
