@@ -1,4 +1,4 @@
-const io = require("socket.io")(3002, {
+const io = require("socket.io")(80, {
     cors: {
       origin: "*", // Allow connections from any origin
       methods: ["GET", "POST"]
