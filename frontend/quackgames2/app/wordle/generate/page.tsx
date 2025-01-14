@@ -23,9 +23,9 @@ const Generate = () => {
         const base64Word = btoa(word); // Base64 encode the word
         const newUrl = `${window.location.origin}/wordle?h=${base64Word}`;
         setGeneratedUrl(newUrl);
-      } catch (e) {
+      } catch (_) {
         setError("Failed to generate URL.");
-        e;
+        
       }
     } else {
       setError("Please enter a 5-letter word.");

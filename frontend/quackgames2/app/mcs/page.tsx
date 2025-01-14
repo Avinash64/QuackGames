@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-export default function mcs() {
+export default function Mcs() {
   const responses = [
     "As I see it, yes.",
     "Ask again later.",

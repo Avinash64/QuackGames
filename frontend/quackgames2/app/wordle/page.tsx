@@ -23,10 +23,10 @@ const Wordle = () => {
     if (decoded.length === 5) {
       targetWord = decoded.toUpperCase(); // Use decoded word if valid
     }
-  } catch (e) {
+  } catch (_) {
     // If there's an error in decoding, just fallback to random Pokémon
     console.error("Invalid base64 string. Falling back to Pokémon.");
-    e;
+    
   }
 
 
