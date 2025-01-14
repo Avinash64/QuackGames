@@ -26,6 +26,7 @@ const Wordle = () => {
   } catch (e) {
     // If there's an error in decoding, just fallback to random Pokémon
     console.error("Invalid base64 string. Falling back to Pokémon.");
+    e;
   }
 
 

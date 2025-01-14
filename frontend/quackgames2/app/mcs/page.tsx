@@ -1,4 +1,6 @@
 "use client"
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import { useState } from "react";
 
 export default function mcs() {

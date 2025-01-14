@@ -25,6 +25,7 @@ const Generate = () => {
         setGeneratedUrl(newUrl);
       } catch (e) {
         setError("Failed to generate URL.");
+        e;
       }
     } else {
       setError("Please enter a 5-letter word.");
