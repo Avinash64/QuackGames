@@ -23,8 +23,9 @@ const Generate = () => {
         const base64Word = btoa(word); // Base64 encode the word
         const newUrl = `${window.location.origin}/wordle?h=${base64Word}`;
         setGeneratedUrl(newUrl);
-      } catch (_) {
+      } catch (e) {
         setError("Failed to generate URL.");
+        console.log(e)
         
       }
     } else {

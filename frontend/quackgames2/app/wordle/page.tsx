@@ -2,14 +2,20 @@
 import { useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link";
-
+import { Suspense } from 'react'
 import { Button } from "@/components/ui/button"
 // List of Pokémon names (for fallback)
 const pokemon = ["Arbok", "Ekans", "Eevee", "Gloom", "Golem", "Pichu", "Absol", "Paras", "Deino", "Gible", "Bagon", "Ditto", "Tepig", "Hypno", "Lotad", "Ralts", "Snivy", "Doduo", "Numel", "Rotom", "Lugia", "Budew", "Magby", "Shinx", "Toxel", "Burmy", "Goomy", "Riolu", "Throh", "Zorua", "Aipom", "Luxio", "Azelf", "Klink", "Lokix", "Minun", "Yanma", "Entei", "Hoopa", "Inkay", "Klang", "Pawmi", "Pawmo", "Munna", "Nacli", "Unown", "Kubfu", "Klawf"];
 const randp = pokemon[Math.floor(Math.random() * pokemon.length)].toUpperCase();
+
+function Search() {
+  const searchParams = useSearchParams()
+ 
+  return searchParams.get('h');
+}
+
 const Wordle = () => {
-  const searchParams = useSearchParams();
-  const search = searchParams.get('h');
+  const search = Search();
 
   let targetWord;
 
@@ -23,10 +29,10 @@ const Wordle = () => {
     if (decoded.length === 5) {
       targetWord = decoded.toUpperCase(); // Use decoded word if valid
     }
-  } catch (_) {
+  } catch (e) {
     // If there's an error in decoding, just fallback to random Pokémon
     console.error("Invalid base64 string. Falling back to Pokémon.");
-    
+    console.log(e)
   }
 
 
@@ -86,6 +92,7 @@ const Wordle = () => {
   };
 
   return (
+      <Suspense>
     <div suppressHydrationWarning className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white gap-2">
       <h1 className="text-4xl mb-6 font-bold">{gameOver ? `${winMsg}` : "Quackle"}</h1>
 
@@ -154,6 +161,7 @@ const Wordle = () => {
         </div>
       )}
     </div>
+      </Suspense>
   );
 };
 
